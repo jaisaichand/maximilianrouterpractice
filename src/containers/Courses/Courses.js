@@ -13,8 +13,14 @@ class Courses extends Component {
 
     clickedCourse = (coursee) => {
         console.log(coursee)
+        console.log(this.props)
         console.log(this.props.location.pathname)
-        this.props.history.push(this.props.location.pathname + '/' + coursee.title.slice(0, coursee.title.indexOf(' ')))
+        console.log(coursee.title.slice(0, coursee.title.indexOf(' ')));
+        this.props.history.push({
+            pathname: this.props.location.pathname + '/' + coursee.title.slice(0, coursee.title.indexOf(' ')),
+            search: '?id=' + coursee.id
+        })
+        //this.props.history.push(this.props.location.pathname + '/' + coursee.title.slice(0, coursee.title.indexOf(' ')))
 
     }
 

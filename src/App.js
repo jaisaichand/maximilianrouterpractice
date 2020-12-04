@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Courses from './containers/Courses/Courses';
 import Course from './containers/Course/Course';
 import Users from './containers/Users/Users';
-import { Switch, Route, BrowserRouter, Link } from 'react-router-dom'
+import { Switch, Route, BrowserRouter, Link, Redirect } from 'react-router-dom'
 
 class App extends Component {
   render() {
@@ -31,12 +31,15 @@ class App extends Component {
                 <p>Welcome</p>
                 <Link to="/users" >Users</Link>
                 <Link to="/courses" >Courses</Link>
+                <Link to="/all-courses" >all-courses</Link>
               </div>
             )} />
 
             <Route path='/users' component={Users} />
             <Route path='/courses' exact component={Courses} />
             <Route path='/courses/:id' component={Course} />
+            <Redirect from="/all-courses" to='courses' />
+            {/* <Route render={() => { <h2>Nope, worng route</h2> }} /> */}
           </Switch>
         </BrowserRouter>
 
